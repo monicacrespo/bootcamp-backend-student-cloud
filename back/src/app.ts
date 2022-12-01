@@ -7,7 +7,6 @@ import {
   logErrorRequestMiddleware,
 } from 'common/middlewares';
 import { listingsAndReviewsApi } from 'pods/listingAndReviews';
-import { authenticationMiddleware, securityApi } from 'pods/security';
 
 const restApiServer = createRestApiServer();
 
@@ -16,8 +15,7 @@ restApiServer.use('/', express.static(staticFilesPath));
 
 restApiServer.use(logRequestMiddleware);
 
-restApiServer.use('/api/security', securityApi);
-restApiServer.use('/api/listingsAndReviews', authenticationMiddleware, listingsAndReviewsApi);
+restApiServer.use('/api/listingsAndReviews', listingsAndReviewsApi);
 
 restApiServer.use(logErrorRequestMiddleware);
 
