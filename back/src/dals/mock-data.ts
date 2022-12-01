@@ -1,29 +1,10 @@
-import { ObjectId } from 'mongodb';
 import { ListingAndReviews } from './listingAndReviews';
-import { User } from './user';
 
 export interface DB {
   listingsAndReviews: ListingAndReviews[];
-  users: User[];
 }
 
 export const db: DB = {
-  users: [
-    {
-      _id: new ObjectId(),
-      email: 'admin@email.com',
-      password: 'test',
-      salt: '',
-      role: 'admin'
-    },
-    {
-      _id: new ObjectId(),
-      email: 'user@email.com',
-      password: 'test',
-      salt: '',
-      role: 'standard-user'
-    },
-  ],
   listingsAndReviews: [
     {
       _id: '01',

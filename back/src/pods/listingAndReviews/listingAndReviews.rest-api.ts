@@ -7,8 +7,6 @@ import {
   mapReviewFromModelToApi,
   mapListingAndReviewsFromApiToModel,
 } from './listingAndReviews.mappers';
-import { authenticationMiddleware } from 'pods/security/security.middleware';
-import { authorizationMiddleware } from 'pods/security';
 
 export const listingsAndReviewsApi = Router();
 
@@ -55,7 +53,7 @@ listingsAndReviewsApi
     }
   })
   // Update a listing
-  .put('/:id', authorizationMiddleware(['admin']), async (req, res, next) => {   
+  .put('/:id', async (req, res, next) => {   
     try {
       const { id } = req.params;
       const updatedListingAndReviews = mapListingAndReviewsFromApiToModel(req.body);
@@ -66,7 +64,7 @@ listingsAndReviewsApi
     }
   })
   // Add a listing
-  .post('/', authorizationMiddleware(['admin']), async (req, res, next) => {
+  .post('/', async (req, res, next) => {
     try {
       const listingAndReviews = mapListingAndReviewsFromApiToModel(req.body);
       const newlistingAndReviews = await listingAndReviewsRepository.insertListingAndReviews(listingAndReviews);
