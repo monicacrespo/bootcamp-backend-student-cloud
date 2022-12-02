@@ -35,16 +35,16 @@ Then, we need to deploy the app to Heroku.
  	    - API_MOCK = true
     	- STATIC_FILES_PATH = "./public"
     	- CORS_ORIGIN = false
-    	- AUTH_SECRET = YOUR SECRET
+    	- AUTH_SECRET = YOUR_SECRET
     
     * Go to the the "Deploy" page and click on the `Heroku Git` icon.
 
 2. In your local machine, in another folder outside back application:
     * Install the Heroku CLI
 
-        To give access to the `Heroku Git` app repository, install globally heroku cli: `npm install -g heroku`.
+        To give access to the `Heroku Git` app repository, install globally heroku cli: `npm install -g heroku`
 
-        If you haven't already, log in to your Heroku account with this command: `heroku login`.
+        If you haven't already, log in to your Heroku account with this command: `heroku login`
 
     * Clone to your local machine the repository generated on Heroku once the `manual-deployment-mock` application has been created: `git clone <yourHerokuGitUrl> .`
 
@@ -55,10 +55,10 @@ Then, we need to deploy the app to Heroku.
 		* dist folder content, except console-runners
 		* public folder
 		* package.json: 
-            - Delete all the "scripts" commands and add: `"start": "node index"`. 
+            - Delete all the "scripts" commands and add: `"start": "node index"`
             - Delete the "devDependencies" object. Heroku will install production dependencies before start the server.
 	
-	    * Create new `.gitignore` file, to ignore the `node_modules` folder, just in case heroku is performing the `npm i`.
+	2. Create new `.gitignore` file, to ignore the `node_modules` folder, just in case heroku is performing the `npm i`
 
         Result:
         ```
