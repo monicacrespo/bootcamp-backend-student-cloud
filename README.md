@@ -80,5 +80,5 @@ Then, we need to deploy the app to Heroku.
         git push
         ```
 
-We have deployed our application that can be found in this [URL](https://manual-deployment-mock.herokuapp.com/)
+The application just deployed can be found in this [URL](https://rental-manual-deployment-mock.herokuapp.com/api/listingsAndReviews)
 
