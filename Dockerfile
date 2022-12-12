@@ -11,6 +11,7 @@ RUN npm run build
 # Release
 FROM base AS release
 COPY --from=back-build /usr/app/dist ./
+COPY ./back/public/index.html ./
 COPY ./back/package.json ./
 COPY ./back/package-lock.json ./
 RUN npm ci --only=production
@@ -18,7 +19,7 @@ RUN npm ci --only=production
 ENV PORT=3001
 ENV NODE_ENV=production
 ENV STATIC_FILES_PATH=./public
-ENV API_MOCK=true
+ENV API_MOCK=false
 ENV CORS_ORIGIN=false
 
 ENTRYPOINT ["node", "index"]
