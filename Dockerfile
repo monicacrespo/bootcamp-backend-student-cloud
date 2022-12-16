@@ -11,15 +11,17 @@ RUN npm run build
 # Release
 FROM base AS release
 COPY --from=back-build /usr/app/dist ./
-COPY ./back/public/index.html ./public
+COPY ./back/public ./public
 COPY ./back/package.json ./
 COPY ./back/package-lock.json ./
 RUN npm ci --only=production
 
+EXPOSE 3001
 ENV PORT=3001
 ENV NODE_ENV=production
 ENV STATIC_FILES_PATH=./public
 ENV API_MOCK=false
 ENV CORS_ORIGIN=false
+ENV AUTH_SECRET=MY_AUTH_SECRET
 
 ENTRYPOINT ["node", "index"]
