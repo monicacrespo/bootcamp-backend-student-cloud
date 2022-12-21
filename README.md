@@ -89,6 +89,8 @@ To consume the images of the houses from S3 Amazon, follow these steps:
 
         Keep the default settings of the bucket and its objects to not have any public access.
  
+        ![S3BucketPermissions](readme-resources/AWS_S3_Bucket_Permissions.JPG)
+
         To provide credentials for our S3 bucket and objects we will create a custom user with IAM service with credentials. It will be valid for backend apps where we can provide credentials in a secure way. To get your IAM user and its Security credentials (access key ID and secret access key), please follow the instructions [here](https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/setting-up.html).
 
         More info [here]( https://github.com/Lemoncode/bootcamp-backend/tree/main/00-stack-documental/05-cloud/01-storage/02-s3-portal).
