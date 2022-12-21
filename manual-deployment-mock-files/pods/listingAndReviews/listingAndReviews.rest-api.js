@@ -20,7 +20,11 @@ listingsAndReviewsApi // Display all listings and its reviews. If country is giv
     const pageSize = Number(req.query.pageSize);
     const page = Number(req.query.page);
     const listingList = await _dals.listingAndReviewsRepository.getListingAndReviewsList(country, page, pageSize);
-    listingList.length >= 1 ? res.send((0, _listingAndReviews.mapListingAndReviewsListFromModelToApi)(listingList)) : res.send('We could not find what you are looking for right now');
+
+    if (listingList.length >= 1) {
+      const apiListingAndReviewsList = await (0, _listingAndReviews.mapListingAndReviewsListFromModelToApiAsync)(listingList);
+      res.send(apiListingAndReviewsList);
+    } else res.send('We could not find what you are looking for right now');
   } catch (error) {
     next(error);
   }
@@ -31,7 +35,11 @@ listingsAndReviewsApi // Display all listings and its reviews. If country is giv
       id
     } = req.params;
     const listing = await _dals.listingAndReviewsRepository.getListingAndReviews(id);
-    listing ? res.send((0, _listingAndReviews.mapListingAndReviewsFromModelToApi)(listing)) : res.send('The property requested is not found');
+
+    if (listing) {
+      const apiListingAndReviews = await (0, _listingAndReviews.mapListingAndReviewsFromModelToApiAsync)(listing);
+      res.send(apiListingAndReviews);
+    } else res.send('The property requested is not found');
   } catch (error) {
     next(error);
   }
@@ -65,7 +73,8 @@ listingsAndReviewsApi // Display all listings and its reviews. If country is giv
   try {
     const listingAndReviews = (0, _listingAndReviews.mapListingAndReviewsFromApiToModel)(req.body);
     const newlistingAndReviews = await _dals.listingAndReviewsRepository.insertListingAndReviews(listingAndReviews);
-    res.status(201).send((0, _listingAndReviews.mapListingAndReviewsFromModelToApi)(newlistingAndReviews));
+    const apiListingAndReviews = await (0, _listingAndReviews.mapListingAndReviewsFromModelToApiAsync)(newlistingAndReviews);
+    res.status(201).send(apiListingAndReviews);
   } catch (error) {
     next(error);
   }
