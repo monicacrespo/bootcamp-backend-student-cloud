@@ -101,7 +101,7 @@ To consume the images of the houses from S3 Amazon, follow these steps:
     * Run `npm install @aws-sdk/client-s3 --save` to install the official aws-sdk v3 library. In the v3, it was published different packages to npm for example for s3-client.
     * Run `npm install @aws-sdk/s3-request-presigner --save` to generate a presigned URL programmatically. More information [here](https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/s3-example-presigned-urls.html).
 
-     ![ListHouses](readme-resources/presigned_listing_url.JPG)   
+     ![SignedListingUrl](readme-resources/presigned_listing_url.JPG)   
  
 3. On Heroku website add config vars. To do so, go to the "Settings" page, scroll until you see the "Config Vars" section. 
     
