@@ -2,7 +2,7 @@ import supertest from 'supertest';
 import { createRestApiServer } from 'core/servers';
 import * as apiModel from './listingAndReviews.api-model';
 import { listingsAndReviewsApi } from './listingAndReviews.rest-api';
-import { mapListingAndReviewsListFromModelToApi } from './listingAndReviews.mappers';
+import { mapListingAndReviewsListFromModelToApiAsync } from './listingAndReviews.mappers';
 
 const app = createRestApiServer();
 app.use(listingsAndReviewsApi);

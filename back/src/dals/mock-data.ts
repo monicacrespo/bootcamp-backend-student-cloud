@@ -8,7 +8,8 @@ export const db: DB = {
   listingsAndReviews: [
     {
       _id: '01',
-      listing_url: '/01-listado-casas.png',
+      // listing_url: 'https://rental-bootcamp-backend-student.s3.eu-west-2.amazonaws.com/01-listado-casas.png',
+      listing_url: '01-listado-casas.png',
       description: 'description',
       bedrooms: 2,
       beds: 3,
@@ -29,7 +30,7 @@ export const db: DB = {
     },
     {
       _id: '02',
-      listing_url: '/02-detalle-casa.png',
+      listing_url: '02-detalle-casa.png',
       description: 'description',
       bedrooms: 2,
       beds: 3,
@@ -50,7 +51,7 @@ export const db: DB = {
     },
     {
       _id: '10082422',
-      listing_url: '',
+      listing_url: 'british-apartment.jpg',
       description: 'description',
       bedrooms: 2,
       beds: 3,
@@ -101,7 +102,7 @@ export const db: DB = {
     },
     {
       _id: '10545725',
-      listing_url: '',
+      listing_url: 'french-apartment.jpg',
       description: 'description 4',
       bedrooms: 2,
       beds: 3,
