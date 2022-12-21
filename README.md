@@ -27,6 +27,8 @@ Once we have the app deployed in Heroku in API mock mode and it's working, we wi
 
     On your back folder's terminal run the following command: `npm run start:console-runners`. And select `create-listings`. 
 
+    ![MongoAtlasCollection](readme-resources/MongoAtlas_Listing-Store_Collection.JPG) 
+
 5. Add config vars on Heroku like this:
   - API_MOCK = false
   - STATIC_FILES_PATH = "./public"
