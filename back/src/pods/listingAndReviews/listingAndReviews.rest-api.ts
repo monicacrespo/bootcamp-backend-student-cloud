@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import { listingAndReviewsRepository, Review } from 'dals';
 import {
-  mapListingAndReviewsListFromModelToApi,
-  mapListingAndReviewsFromModelToApi,
+  mapListingAndReviewsListFromModelToApiAsync,
+  mapListingAndReviewsFromModelToApiAsync,
   mapReviewFromApiToModel,
   mapReviewFromModelToApi,
   mapListingAndReviewsFromApiToModel,
@@ -18,9 +18,12 @@ listingsAndReviewsApi
       const pageSize = Number(req.query.pageSize);
       const page = Number(req.query.page);
       const listingList = await listingAndReviewsRepository.getListingAndReviewsList(country, page, pageSize);
-      listingList.length >= 1
-        ? res.send(mapListingAndReviewsListFromModelToApi(listingList))
-        : res.send('We could not find what you are looking for right now')
+      if (listingList.length >= 1)
+      {
+        const apiListingAndReviewsList = await mapListingAndReviewsListFromModelToApiAsync(listingList);
+        res.send(apiListingAndReviewsList);
+      }
+      else res.send('We could not find what you are looking for right now');
     } catch (error) {
       next(error);
     }
@@ -30,9 +33,12 @@ listingsAndReviewsApi
     try {
       const { id } = req.params;
       const listing = await listingAndReviewsRepository.getListingAndReviews(id);
-      listing
-        ? res.send(mapListingAndReviewsFromModelToApi(listing))
-        : res.send('The property requested is not found');
+      if (listing)
+      {
+        const apiListingAndReviews = await mapListingAndReviewsFromModelToApiAsync(listing);
+        res.send(apiListingAndReviews);
+      }
+      else res.send('The property requested is not found');
     } catch (error) {
       next(error);
     }
@@ -68,7 +74,8 @@ listingsAndReviewsApi
     try {
       const listingAndReviews = mapListingAndReviewsFromApiToModel(req.body);
       const newlistingAndReviews = await listingAndReviewsRepository.insertListingAndReviews(listingAndReviews);
-      res.status(201).send(mapListingAndReviewsFromModelToApi(newlistingAndReviews));
+      const apiListingAndReviews = await mapListingAndReviewsFromModelToApiAsync(newlistingAndReviews);
+      res.status(201).send(apiListingAndReviews);
     } catch (error) {
       next(error);
     }

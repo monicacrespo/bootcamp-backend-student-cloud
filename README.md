@@ -86,3 +86,6 @@ Note that uses multi-stage builds to decrease this size, with only the necessary
 
 
 The application just deployed can be found in this [URL](https://rental-automated-deployment.herokuapp.com/api/listingsAndReviews).
+
+# AWS S3 storage
+  Please see the details in `manual-deployment-mock` branch.
