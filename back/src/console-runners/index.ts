@@ -7,7 +7,7 @@ import { prompt } from 'inquirer';
       name: 'consoleRunner',
       type: 'list',
       message: 'Which console-runner do you want to run?',
-      choices: ['seed-data', 'exit'],
+      choices: ['seed-data','create-listings', 'exit'],
     });
 
     if (answer.consoleRunner !== 'exit') {

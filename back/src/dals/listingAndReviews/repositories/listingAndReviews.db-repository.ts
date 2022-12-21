@@ -57,21 +57,29 @@ export const dbRepository: ListingAndReviewsRepository = {
     return listingAndReviews;
     },
   insertListingAndReviews: async (listingAndReviews: ListingAndReviews) => {
-    await getListingAndReviewsContext().insertOne(      
+    // The upsert field when true, creates a new document if no documents match the filter.
+    // Or updates a single document that matches the filter.
+    await getListingAndReviewsContext().findOneAndUpdate( 
       {
         _id: listingAndReviews._id,
-        listing_url: listingAndReviews.listing_url,
-        description: listingAndReviews.description,
-        address: {
-          street: listingAndReviews.address.street,
-          market: listingAndReviews.address.market,
-          country: listingAndReviews.address.country
-        },
-        bedrooms: listingAndReviews.bedrooms,
-        beds: listingAndReviews.beds,
-        bathrooms: listingAndReviews.bathrooms,
-        reviews: listingAndReviews.reviews
       },
+      {
+        $set: { 
+          _id: listingAndReviews._id,
+          listing_url: listingAndReviews.listing_url,
+          description: listingAndReviews.description,
+          address: {
+            street: listingAndReviews.address.street,
+            market: listingAndReviews.address.market,
+            country: listingAndReviews.address.country
+          },
+          bedrooms: listingAndReviews.bedrooms,
+          beds: listingAndReviews.beds,
+          bathrooms: listingAndReviews.bathrooms,
+          reviews: listingAndReviews.reviews
+        }
+      },
+      { upsert: true, returnDocument: "after" }
     );
     return listingAndReviews;
   },
