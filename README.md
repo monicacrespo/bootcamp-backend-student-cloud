@@ -35,3 +35,6 @@ Once we have the app deployed in Heroku in API mock mode and it's working, we wi
   - MONGODB_URI = "yourmongodbUri"
 
   The application just deployed can be found in this [URL](https://rental-manual-deployment-mongo.herokuapp.com/api/listingsAndReviews)
+
+  # AWS S3 storage
+  Please see the details in `manual-deployment-mock` branch.
